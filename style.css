@@ -1,0 +1,54 @@
+.body{
+    line-height: 1;
+    background: #d4d3d8;
+    font-family: "Montserrat";
+}
+#block{
+    background: #e712c3;
+    padding: 8px 16px;
+}
+#block:hover{
+    background: #ebdada;
+
+}
+.people {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  input[type="checkbox"] {
+  justify-content: center;
+
+  }
+  
+ .container{
+    padding: 60px ;
+ } 
+  input[type="text"] {
+    padding: 5px;
+    width: 150px;
+    padding: 15px 40px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+    box-shadow: rgba(0, 0, 0,.1) -8px 0 10px inset;
+    margin-right: 40px;
+    
+
+  }
+  
+  .fa-trash {
+    margin-left: 10px;
+    color: red;
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"]:checked + input[type="text"] {
+    text-decoration: line-through;
+  }
+  

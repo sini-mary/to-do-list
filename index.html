@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checklist Creator</title>
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Roboto', sans-serif;
+          background-color: #f2f2f2;
+      }
+
+      h1 {
+          text-align: center;
+          padding: 30px 0;
+          color: #555;
+      }
+
+      #app {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 30px;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="text"], button {
+          width: 100%;
+          padding: 10px 20px;
+          margin-bottom: 15px;
+          font-size: 16px;
+          border: none;
+          border-radius: 5px;
+          outline: none;
+          transition: 0.3s;
+      }
+
+      button {
+          background-color: #007BFF;
+          color: #fff;
+          cursor: pointer;
+          width: 20%;
+          display: inline-block;
+          text-align: center;
+      }
+
+      button:hover {
+          background-color: #0056b3;
+      }
+
+      ul {
+          list-style-type: none;
+          padding-left: 20px;
+      }
+
+      ul li {
+          position: relative;
+          padding: 15px 30px;
+          margin-bottom: 10px;
+          background-color: #ddd;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          animation: fadeIn 0.2s;
+      }
+
+      ul li input[type="checkbox"] {
+          margin-right: 15px;
+          cursor: pointer;
+      }
+
+      ul li .remove-btn {
+          background-color: #E91E63;
+          color: #fff;
+          padding: 5px 20px;
+          border-radius: 5px;
+          border: none;
+          font-size: 14px;
+          cursor: pointer;
+          margin-left: auto;
+          transition: 0.2s;
+      }
+
+      ul li .remove-btn:hover {
+          background-color: #d81b60;
+      }
+
+      @keyframes fadeIn {
+          0% {
+              opacity: 0;
+              transform: translateY(50px);
+          }
+          100% {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Checklist Creator</h1>
+
+    <div id="app">
+      <input type="text" id="task-input" placeholder="Enter a task" />
+      <button id="add-task">Add Task</button>
+      <ul id="task-list"></ul>
+    </div>
+
+    <script>
+      const taskInput = document.querySelector('#task-input');
+      const addTaskBtn = document.querySelector('#add-task');
+      const taskList = document.querySelector('#task-list');
+
+      function createTask() {
+          if (taskInput.value.trim()) {
+              const task = document.createElement('li');
+              const removeBtn = document.createElement('button');
+              removeBtn.textContent = "Remove";
+              removeBtn.className = "remove-btn";
+              removeBtn.addEventListener('click', () => task.remove());
+              task.innerHTML = `<input type="checkbox">${taskInput.value.trim()}`;
+              task.appendChild(removeBtn);
+              taskList.appendChild(task);
+              taskInput.value = '';
+          }
+      }
+
+      addTaskBtn.addEventListener('click', createTask);
+
+      taskInput.addEventListener('keydown', (e) => {
+          if (e.key === "Enter") {
+              if(taskInput.value.length>0)
+              {
+                  createTask();
+              }
+
+          }
+      });
+    </script>
+  </body>
+</html>
